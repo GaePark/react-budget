@@ -61,6 +61,9 @@ function App() {
     );
     setListItem(removeList);
     setIsActive(false);
+    setEdit(false);
+    setItem("");
+    setPrice(0);
     setNotification("아이템이 제거되었습니다.");
   };
 
