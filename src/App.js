@@ -6,7 +6,7 @@ import * as S from "./styles/styles";
 
 function App() {
   const [item, setItem] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [listItem, setListItem] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -63,7 +63,7 @@ function App() {
     setIsActive(false);
     setEdit(false);
     setItem("");
-    setPrice(0);
+    setPrice("");
     setNotification("아이템이 제거되었습니다.");
   };
 
