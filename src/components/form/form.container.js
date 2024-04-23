@@ -13,7 +13,8 @@ const Form = ({
   inputRef,
 }) => {
   const onChangePrice = (e) => {
-    setPrice(Number(e.target.value));
+    let value = e.target.value.replace(/[^0-9]/g, "");
+    setPrice(Number(value));
     setNotification();
   };
 
@@ -32,17 +33,17 @@ const Form = ({
               type="text"
               onChange={onChangeItem}
               value={item}
-              onKeyDown={(e) => onKeyDownEnter(e)}
+              onKeyDown={onKeyDownEnter}
               ref={inputRef}
             />
           </div>
           <div>
             <div>비용</div>
             <S.Input
-              type="number"
+              type="text"
               onChange={onChangePrice}
               value={price}
-              onKeyDown={(e) => onKeyDownEnter(e)}
+              onKeyDown={onKeyDownEnter}
             />
           </div>
         </S.Wrapper>
