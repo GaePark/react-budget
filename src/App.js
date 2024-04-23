@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Form from "./components/form/form.container";
 import Lists from "./components/lists/Lists.container";
 import "./App.css";
@@ -11,6 +11,8 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [edit, setEdit] = useState(false);
   const [id, setId] = useState("");
+
+  const inputRef = useRef();
 
   const [notification, setNotification] = useState("");
 
@@ -30,6 +32,8 @@ function App() {
 
         setItem("");
         setPrice("");
+
+        inputRef.current.focus();
       } else {
         const newItem = listItem.map((list) => {
           return list.id === id ? { ...list, price, item } : list;
@@ -42,7 +46,15 @@ function App() {
 
         setItem("");
         setPrice("");
+
+        inputRef.current.focus();
       }
+    }
+  };
+
+  const onKeyDownEnter = (e) => {
+    if (e.key === "Enter") {
+      onClickSubmit();
     }
   };
 
@@ -84,6 +96,8 @@ function App() {
             onClickSubmit={onClickSubmit}
             setNotification={setNotification}
             edit={edit}
+            onKeyDownEnter={onKeyDownEnter}
+            inputRef={inputRef}
           />
           <Lists
             listItem={listItem}

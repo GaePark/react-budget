@@ -9,6 +9,8 @@ const Form = ({
   price,
   setNotification,
   edit,
+  onKeyDownEnter,
+  inputRef,
 }) => {
   const onChangePrice = (e) => {
     setPrice(Number(e.target.value));
@@ -26,11 +28,22 @@ const Form = ({
         <S.Wrapper>
           <div>
             <div>지출 항목</div>
-            <S.Input type="text" onChange={onChangeItem} value={item} />
+            <S.Input
+              type="text"
+              onChange={onChangeItem}
+              value={item}
+              onKeyDown={(e) => onKeyDownEnter(e)}
+              ref={inputRef}
+            />
           </div>
           <div>
             <div>비용</div>
-            <S.Input type="number" onChange={onChangePrice} value={price} />
+            <S.Input
+              type="number"
+              onChange={onChangePrice}
+              value={price}
+              onKeyDown={(e) => onKeyDownEnter(e)}
+            />
           </div>
         </S.Wrapper>
         <S.Button onClick={onClickSubmit}>제출</S.Button>
